@@ -126,31 +126,21 @@ const randomizedMessage = (array) => {
     return array[randomNum];
 }
 
-// console.log(randomizedMessage(messages));
-
 const dailyMessage = (object) => {
     const keys = Object.keys(object);
- 
-    switch(randomizedMessage(keys)) {
-        case "_powerful": {
-            return `Are you feeling powerful today: \n => ${randomizedMessage(object._powerful)}`;
-        }
-        case "_vigorous": {
-            return `Does being vigorous makes you strong today: \n => ${randomizedMessage(object._vigorous)}`;
-        }
-        case "_focused": {
-            return `Is being focused your goal today: \n => ${randomizedMessage(object._focused)}`;
-        }
-        case "_stalwart": {
-            return `Feel sturdy stalwart today: \n => ${randomizedMessage(object._stalwart)}`;
-        }
-        case "_courageous": {
-            return `Fearless mind today: \n => ${randomizedMessage(object._courageous)}`;
-        }
-        default: {
-            return `Nothing for today`;
-        }
-    }
+    const options =  {
+        '_powerful': () => `Are you feeling powerful today: \n => ${randomizedMessage(object._powerful)}`,
+        '_vigorous': () => `Does being vigorous makes you strong today: \n => ${randomizedMessage(object._vigorous)}`,
+        '_focused': () => `Is being focused your goal today: \n => ${randomizedMessage(object._focused)}`,
+        '_stalwart': () => `Feel sturdy stalwart today: \n => ${randomizedMessage(object._stalwart)}`,
+        '_courageous': () =>`Fearless mind today: \n => ${randomizedMessage(object._courageous)}`
+    } ;
+
+    const message = options[randomizedMessage(keys)]
+
+    return message ? message() : 'My default message';
+
 }
 
-console.log(dailyMessage(dailyBattleMessages));
+const dailyMsgToday = dailyMessage(dailyBattleMessages);
+console.log(dailyMsgToday);
