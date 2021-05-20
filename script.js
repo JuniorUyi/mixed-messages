@@ -21,4 +21,11 @@ const messages = [
     '\“And, when you want something, all the universe conspires in helping you to achieve it.\”\n― Paulo Coelho, The Alchemist ',
     '\“So, this is my life. And I want you to know that I am both happy and sad and I\'m still trying to figure out how that could be.\”\n― Stephen Chbosky, The Perks of Being a Wallflower '
 ]
-console.log(messages);
+// console.log(messages[messages.length-1]);
+
+const randomizedMessage = (array) => {
+    const randomNum = Math.floor(Math.random() * array.length);
+    return array[randomNum];
+}
+
+console.log(randomizedMessage(messages));
