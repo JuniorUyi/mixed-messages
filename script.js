@@ -23,9 +23,134 @@ const messages = [
 ]
 // console.log(messages[messages.length-1]);
 
+const dailyBattleMessages = {
+    _powerful: [
+        'Fate conspires for us, surprisingly!',
+        'Stir! Rise and stir your resolve!',
+        'I have sighted their weaknesses!',
+        'MMMRRRRAAAAAAA!',
+        'GLORY AND HONOR! Ever thus to the brave, my friends!',
+        'You\'ve seen how I do it, now you try!',
+        'KREEEE-YAAAAAA!',
+        'The shadows grow too long for fooling around.',
+        'Her ears perk up - strike hard and without mercy',
+        'Ha haaa! Ha haa haaaaa! HAA HAAAAAAA!',
+        'Power is the gift of fearlessness. It is always so.',
+        'Let us press together!',
+        'I will show you how we can finish this!',
+        'Physique, soul, and intellect, in perfect harmony.',
+        'Such power... It has infected us all.',
+        'Power is not about strength, but about timing.',
+        'This is a holy boon. Use it wisely.'
+    ],
+    _vigorous: [
+        'This is beyond my knowledge, but I do feel strengthened!',
+        'Roll up your sleeves! Profit requires toil!',
+        'I can see for miles!',
+        'Nothing will stop me.',
+        'My every step sanctifies this unholy earth!',
+        'A little bravery beats laudanum any day, apparently.',
+        'I hear the song of the wild... The spirits watch me.',
+        'Hmmm... I am feeling almost confident today.',
+        'Our ideals bring us strength!',
+        'Do I feel better, or is that just the pipe-weed?',
+        'I suppose I must be grateful, to go on surviving.',
+        'Ah! My heart roars to serve alongside such stalwarts!',
+        'I am like a wolf, following tirelessly, waiting for weakness!',
+        'SARTHOR\'GOR AN PHIROAH. MARASTH LIKA\'LAH BOH\'NROTH.',
+        'Even steel cannot pierce a healthy immune system!',
+        'My heart pounds to forgotten rhythms!',
+        'As mother said... my suffering has prepared me well.'
+    ],
+    _focused: [
+        'Strike the nerve I showed you, the art is ancient but lethal.',
+        'Be calm, still your minds.',
+        'Breathe like this and feel the calm grow.',
+        'I live for this.',
+        'Go forth, friend. TO VICTORY!',
+        'Seems you\'ve caught the gist of it. Fancy that!',
+        'Nothing escapes the eyes of the warhawk.',
+        'Look at you, all ready to knock some skulls!',
+        'Follow your instincts! They lead true!',
+        'Never been much of a leader, but I\'ll try... TALLY HO!',
+        'You have the killing eye. Turn it towards our victory.',
+        'Yes! Our victory is assured through these tactics!',
+        'Watch your target grow larger and larger, in your mind\'s eye!',
+        'Ah... the serenity of total mental concentration.',
+        'Ill fortune will not deter me from my goal!',
+        'Discipline and focus — these are the tools of a master!',
+        'The sacred fire whispers your name. You are most blessed.'
+    ],
+    _stalwart: [
+        'This struggle may never end but I will not give in now!',
+        'There is no profit without struggle!',
+        'These are small bumps on life\'s long road.',
+        'I come prepared. Always.',
+        'I have been judged worthy!',
+        'Well now... I feel positively radiant!',
+        'Hear me, elder spirits! I have passed the test!',
+        'Bah. Who needs brandy when you\'ve got false courage.',
+        'Bah. Who needs brandy when you\ve got false courage.',
+        'Blast. Seems I\'ll see tomorrow after all.',
+        'The sun is brightest after darkest night.',
+        'Our cause unites us!',
+        'Victory is near! My soul burns!',
+        'Fell energy courses through me...',
+        'Even the will benefits from the immune response!',
+        'To be hopeless is to be fooled by one\'s self!',
+        'I cannot be extinguished when fire burns within.'
+    ],
+    _courageous: [
+        'As long as we are one, we can prevail!',
+        'He serves me now, and I have his power!',
+        'We can beat them all!',
+        'Keep yourselves together. T\'aint so bad.',
+        'OOONWAAARD!',
+        'Just stay focused on the prize. Stay focused...',
+        'Look at me... You are going to make it -- ALL OF YOU!',
+        'Drink this. Inebriation is your best ally, I always say.',
+        'Be inspired by the purity of the hunt!',
+        'Be calmed. We shall live to suffer another day.',
+        'We have become as steel.',
+        'Lean on me, you need not ask.',
+        'We have their scent, they will fall!',
+        'We have survived thus far! We can survive so much more!',
+        'You see? No physic alive can match my arts!',
+        'Tomorrow is for healing! Today, for glory!',
+        'Do not despair. As the black deepens, my power grows...'
+    ],
+}
+
 const randomizedMessage = (array) => {
     const randomNum = Math.floor(Math.random() * array.length);
     return array[randomNum];
 }
 
-console.log(randomizedMessage(messages));
+// console.log(randomizedMessage(messages));
+
+const dailyMessage = (object) => {
+    const keys = Object.keys(object);
+ 
+    switch(randomizedMessage(keys)) {
+        case "_powerful": {
+            return `Are you feeling powerful today: \n => ${randomizedMessage(object._powerful)}`;
+        }
+        case "_vigorous": {
+            return `Does being vigorous makes you strong today: \n => ${randomizedMessage(object._vigorous)}`;
+        }
+        case "_focused": {
+            return `Is being focused your goal today: \n => ${randomizedMessage(object._focused)}`;
+        }
+        case "_stalwart": {
+            return `Feel sturdy stalwart today: \n => ${randomizedMessage(object._stalwart)}`;
+        }
+        case "_courageous": {
+            return `Fearless mind today: \n => ${randomizedMessage(object._courageous)}`;
+        }
+        default: {
+            return `Nothing for today`;
+        }
+    }
+}
+
+console.log(dailyMessage(dailyBattleMessages));
